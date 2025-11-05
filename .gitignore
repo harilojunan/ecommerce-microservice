@@ -31,3 +31,40 @@ build/
 
 ### VS Code ###
 .vscode/
+
+# Build Artifacts
+out/
+
+# IDE-specific files
+.idea/
+.settings/
+.apt_generated/
+.springBeans/
+.sts4-cache/
+
+# Dependency caches
+.gradle/
+.m2/
+node_modules/
+bower_components/
+
+# Logs and temporary files
+logs/
+*.log
+*.tmp
+*~
+*.swp
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Environment-specific configuration (if not intended for sharing)
+.env
+application.properties
+application.yml
+
+# Maven Wrapper
+mvnw
+mvnw.cmd
