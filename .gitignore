@@ -62,8 +62,6 @@ Desktop.ini
 
 # Environment-specific configuration (if not intended for sharing)
 .env
-application.properties
-application.yml
 
 # Maven Wrapper
 mvnw
