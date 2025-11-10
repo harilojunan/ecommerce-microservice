@@ -11,6 +11,6 @@ public interface ProductService {
     ProductResponse getProductById(Long id);
     List<ProductResponse> getProducts();
     ProductResponse updateProduct(ProductRequest request);
-    void deleteProductById(Long id);
+    String deleteProductById(Long id);
 
 }
