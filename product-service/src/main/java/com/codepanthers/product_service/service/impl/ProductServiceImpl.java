@@ -64,7 +64,12 @@ public class ProductServiceImpl implements ProductService {
         if(Objects.nonNull(productMapper.toEntity(request).getId()) && productRepo.findById(productMapper.toEntity(request).getId()).isEmpty()){
             throw new IllegalArgumentException("Product not found with id: " + productMapper.toEntity(request).getId());
         }
-        return null;
+
+        Product product = productRepo.findById(productMapper.toEntity(request).getId()).get();
+        product.setId(productMapper.toEntity(request).getId());
+        Product savedProduct = productRepo.save(product);
+
+        return productMapper.toResponse(savedProduct);
     }
 
     @Override
