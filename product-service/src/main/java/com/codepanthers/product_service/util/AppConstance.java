@@ -14,8 +14,16 @@ public class AppConstance {
     /** The Constant BASE_URL. */
     public static final String BASE_URL = "/api/v1/products";
 
-    /** The Constant PRODUCTS_URL. */
-    public static final String PRODUCTS_URL = "/products";
-    /** The Constant PRODUCT_BY_ID_URL. */
-    public static final String PRODUCT_BY_ID_URL = "/product/{id}";
+    /** The Constant ADD_URL. */
+    public static final String ADD_URL = "/add";
+    /** The Constant ALL_URL. */
+    public static final String ALL_URL = "/all";
+    /** The Constant SEARCH_URL. */
+    public static final String SEARCH_URL = "/search";
+    /** The Constant COUNT_URL. */
+    public static final String COUNT_URL = "/count";
+    /** The Constant COUNT_BETWEEN_URL. */
+    public static final String COUNT_BETWEEN_URL = "/countBetween";
+    /** The Constant UPDATE_URL. */
+    public static final String UPDATE_URL = "/update";
 }
