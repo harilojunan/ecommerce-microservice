@@ -1,30 +1,21 @@
 package com.codepanthers.product_service.duplicate;
 
 import com.codepanthers.product_service.dto.ProductRequest;
-import com.codepanthers.product_service.dto.ProductResponse;
-import com.codepanthers.product_service.dto.mapper.ProductMapper;
-import com.codepanthers.product_service.entity.Product;
+import com.codepanthers.product_service.repo.ProductRepo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 @Component
 @RequiredArgsConstructor
 public class GenericDuplicateStrategy implements DuplicateDetectionHandler {
 
-    private final ProductMapper productMapper;
+    private final ProductRepo productRepo;
 
     @Override
-    public List<ProductResponse> findDuplicates(ProductRequest request, List<Product> existingProducts) {
-        return existingProducts.stream()
-                .filter(p ->
-                        p.getName().equalsIgnoreCase(productMapper.toEntity(request).getName()) ||
-                                (productMapper.toEntity(request).getPrice() != null && productMapper.toEntity(request).getPrice().equals(p.getPrice())) ||
-                                (productMapper.toEntity(request).getCreatedDate() != null && productMapper.toEntity(request).getCreatedDate().equals(p.getCreatedDate()))
-                )
-                .map(productMapper::toResponse)
-                .collect(Collectors.toList());
+    public boolean hasDuplicates(ProductRequest request) {
+        if (productRepo.existsByCode(request.productCode())) {
+            return true;
+        }
+        return !productRepo.findByNameIgnoreCaseAndPrice(request.name(), request.price()).isEmpty();
     }
 }
